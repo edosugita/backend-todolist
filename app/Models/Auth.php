@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Auth extends Model
 {
-    protected $table = 'Users';
+    protected $table = 'users';
     protected $fillable = [
         'uuid',
         'name',

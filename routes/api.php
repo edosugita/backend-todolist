@@ -39,7 +39,17 @@ Route::middleware('api_key')->group(function () {
     // API FOR USERS
     Route::prefix('/user')->group(function () {
         Route::post('/create', [AuthController::class, 'createUser']);
-        Route::put('/update/{kode}', [AuthController::class, 'updateUser']);
-        Route::delete('/delete/{kode}', [AuthController::class, 'deleteUser']);
+
+        Route::prefix('/update')->group(function () {
+            Route::put('/{uuid}', [AuthController::class, 'updateUser']);
+            Route::put('/password/{uuid}', [AuthController::class, 'updatePasswordUser']);
+        });
+
+        Route::delete('/delete/{uuid}', [AuthController::class, 'deleteUser']);
+
+        Route::prefix('/get')->group(function () {
+            Route::get('/', [AuthController::class, 'getAllUser']);
+            Route::get('/{kode}', [AuthController::class, 'getUser']);
+        });
     });
 });

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
 {
-    protected $table = 'Levels';
+    protected $table = 'levels';
     protected $fillable = [
         'name',
         'kode'

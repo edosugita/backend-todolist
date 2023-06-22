@@ -17,8 +17,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->foreignId('status')->constrained('levels');
-            $table->string('picture');
+            $table->foreignId('status')
+                ->constrained('levels')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
+            $table->string('picture')->default('user.png');
             $table->timestamps();
         });
     }
